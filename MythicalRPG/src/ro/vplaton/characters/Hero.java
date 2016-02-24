@@ -26,13 +26,16 @@ public class Hero extends Character {
         level++;
     }
 
+    @Override
     public void getDamage(int damage) {
         health -= damage - armor.getDefence();
+        super.getDamage(damage);
     }
 
+    @Override
     public int computeDamage() {
         if (weapon != null) {
-            return weapon.getDamage();
+            return weapon.getDamage() + (level / 2);
         } else {
             return 0;
         }

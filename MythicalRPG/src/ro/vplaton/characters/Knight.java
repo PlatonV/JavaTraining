@@ -6,6 +6,6 @@ package ro.vplaton.characters;
 public class Knight extends Hero {
     public Knight(String name, int level) {
         super(name, level);
-        health = 300;
+        health = 300 + level * 10;
     }
 }

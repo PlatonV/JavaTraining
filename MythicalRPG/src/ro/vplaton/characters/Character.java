@@ -3,14 +3,25 @@ package ro.vplaton.characters;
 /**
  * Created by plato on 2/23/2016.
  */
-public class Character {
+public abstract class Character {
     protected int health;
     protected int level;
-    protected String name;
+    protected boolean isDead;
+    protected final String name;
+    private final int id;
+
+    private static int idCounter = 0;
 
     public Character(String name, int level) {
         this.level = level;
         this.name = name;
+        this.isDead = false;
+        this.id = idCounter;
+        idCounter++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getLevel() {
@@ -26,14 +37,34 @@ public class Character {
     }
 
     public void getDamage(int amount) {
-        health -= amount;
+        if (health <= 0) {
+            isDead = true;
+        }
     }
 
-    public int computeDamage() {
-        return 0;
+    public boolean isDead() {
+        return isDead;
     }
 
+    public abstract int computeDamage();
+
+    @Override
     public String toString() {
-        return name + " has " + health + "hp";
+        return "[" + id + "]" + name + " has " + health + "hp";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Character) {
+            return this.id == ((Character) obj).id;
+        } else {
+            return false;
+        }
     }
 }

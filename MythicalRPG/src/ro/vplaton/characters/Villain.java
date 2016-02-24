@@ -8,7 +8,14 @@ public class Villain extends Character {
         super(name, level);
     }
 
+    @Override
+    public void getDamage(int damage) {
+        health -= damage;
+        super.getDamage(damage);
+    }
+
+    @Override
     public int computeDamage() {
-        return 30;
+        return 30 + 5 * level;
     }
 }

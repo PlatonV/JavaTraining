@@ -6,6 +6,6 @@ package ro.vplaton.characters;
 public class Orc extends Hero {
     public Orc(String name, int level) {
         super(name, level);
-        health = 350;
+        health = 350 + level * 10;
     }
 }

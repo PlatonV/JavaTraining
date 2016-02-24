@@ -6,6 +6,6 @@ package ro.vplaton.characters;
 public class Mage extends Hero {
     public Mage(String name, int level) {
         super(name, level);
-        health = 150;
+        health = 150 + level * 10;
     }
 }
