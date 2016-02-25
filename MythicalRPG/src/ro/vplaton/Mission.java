@@ -2,18 +2,18 @@ package ro.vplaton;
 
 import ro.vplaton.characters.Villain;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by plato on 2/24/2016.
  */
 public class Mission {
     private final String name;
-    private ArrayList<Villain> villains;
+    private LinkedList<Villain> villains;
 
     public Mission(String name) {
         this.name = name;
-        villains = new ArrayList<Villain>(10);
+        villains = new LinkedList<Villain>();
     }
 
     public String getName() {
@@ -24,8 +24,8 @@ public class Mission {
         villains.add(villain);
     }
 
-    public ArrayList<Villain> getVillains() {
-        ArrayList<Villain> result = new ArrayList<Villain>(10);
+    public LinkedList<Villain> getVillains() {
+        LinkedList<Villain> result = new LinkedList<Villain>();
         for (Villain v: villains) {
             if (!v.isDead()) {
                 result.add(v);

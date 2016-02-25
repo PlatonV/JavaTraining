@@ -1,10 +1,9 @@
 package ro.vplaton;
 
-import ro.vplaton.artifacts.*;
 import ro.vplaton.characters.*;
 import ro.vplaton.characters.Character;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 /**
  * Created by plato on 2/23/2016.
@@ -19,10 +18,19 @@ public class Main {
                 (previousHealth - defender.getHealth()) + " damage");
     }
 
+    public static void saveGame(Player player) {
+        try {
+            PlayerSaver.savePlayer(player);
+        }
+        catch  (Exception e) {
+            System.out.println("Cannot save");
+        }
+    }
+
     public static void playMission(Player player, Mission mission) {
         int turn = 1;
-        ArrayList<Villain> deadVillains = new ArrayList<Villain>(10);
         System.out.println("Player \"" + player.getUsername() + "\" has started entered " + mission.getName() + " with " + player.getHero().getName());
+        player.selectHero(player.getHeroes().get(0).getName());
         while (!mission.isFinished() && !player.getHero().isDead()) {
             System.out.println("Turn: " + turn);
             for (Villain v: mission.getVillains()) {
@@ -31,6 +39,7 @@ public class Main {
                 System.out.println(v);
                 if (v.isDead()) {
                     System.out.println(v.getName() + " has died...");
+                    player.getHero().giveExperience(v.getLevel());
                     continue;
                 }
                 attack(v, player.getHero());
@@ -46,26 +55,26 @@ public class Main {
         } else {
             System.out.println(player.getUsername() + " has lost!");
         }
+        saveGame(player);
     }
 
     public static void main(String[] args) {
-        Elf hero = new Elf("Leonidas", 1);
+        Mission mission = null;
+        MissionLoader missionLoader = new MissionLoader("missions");
+        try {
+            mission = missionLoader.loadMission("Level1");
+        }
+        catch (IOException e) {
+            System.out.println("Mission not found!");
+        }
+        catch (Exception e) {
+            System.out.println("Error loading mission!");
+        }
 
-        hero.giveWeapon(new Weapon("Mighty bow", 75));
-        hero.giveArmor(new Armor("Pants", 15));
-
-        Necromancer ovidiu = new Necromancer("Ovidiu", 1);
-        Devil mark = new Devil("Mark", 1);
-        DarkMage johann = new DarkMage("Johann", 1);
-
-        Mission level1 = new Mission("Level 1");
-
-        level1.addVillain(ovidiu);
-        level1.addVillain(mark);
-        level1.addVillain(johann);
-
-        Player player1 = new Player("player1", hero);
-
-        playMission(player1, level1);
+        try {
+            playMission(PlayerLoader.loadPlayer("player1"), mission);
+        } catch (Exception e) {
+            System.out.println("Could not load player!");
+        }
     }
 }

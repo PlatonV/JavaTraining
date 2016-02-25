@@ -67,4 +67,7 @@ public abstract class Character {
             return false;
         }
     }
+
+    public void saveData(String filePath) {
+    }
 }
