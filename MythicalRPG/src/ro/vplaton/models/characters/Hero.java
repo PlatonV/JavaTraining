@@ -1,6 +1,8 @@
-package ro.vplaton.characters;
+package ro.vplaton.models.characters;
 
-import ro.vplaton.artifacts.*;
+import ro.vplaton.models.artifacts.Armor;
+import ro.vplaton.models.artifacts.Artifact;
+import ro.vplaton.models.artifacts.Weapon;
 
 import java.util.ArrayList;
 
@@ -67,5 +69,21 @@ public class Hero extends Character {
         } else {
             return 0;
         }
+    }
+
+    public String getClassString() {
+        if (this instanceof Knight) {
+            return "Knight";
+        }
+        if (this instanceof Orc) {
+            return "Orc";
+        }
+        if (this instanceof Mage) {
+            return "Mage";
+        }
+        if (this instanceof Elf) {
+            return "Elf";
+        }
+        return "Hero";
     }
 }

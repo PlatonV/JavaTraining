@@ -1,6 +1,6 @@
-package ro.vplaton;
+package ro.vplaton.models;
 
-import ro.vplaton.characters.Villain;
+import ro.vplaton.models.characters.Villain;
 
 import java.util.LinkedList;
 

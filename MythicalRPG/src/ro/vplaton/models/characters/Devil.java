@@ -1,6 +1,4 @@
-package ro.vplaton.characters;
-
-import ro.vplaton.characters.Villain;
+package ro.vplaton.models.characters;
 
 /**
  * Created by plato on 2/23/2016.

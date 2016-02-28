@@ -1,8 +1,7 @@
-package ro.vplaton;
+package ro.vplaton.models;
 
-import ro.vplaton.characters.Hero;
+import ro.vplaton.models.characters.Hero;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -26,6 +25,15 @@ public class Player {
         return hero;
     }
 
+    public Hero getHero(String heroName) {
+        for (Hero h: heroes) {
+            if (h.getName() == heroName) {
+                return h;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Hero> getHeroes() {
         return heroes;
     }
@@ -40,5 +48,9 @@ public class Player {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String name) {
+        this.username = name;
     }
 }

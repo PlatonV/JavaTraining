@@ -1,6 +1,5 @@
-package ro.vplaton;
-
-import ro.vplaton.characters.Hero;
+import ro.vplaton.models.Player;
+import ro.vplaton.models.characters.Hero;
 
 import java.io.FileWriter;
 import java.io.IOException;

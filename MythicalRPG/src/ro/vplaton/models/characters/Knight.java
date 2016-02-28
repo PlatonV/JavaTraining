@@ -1,4 +1,4 @@
-package ro.vplaton.characters;
+package ro.vplaton.models.characters;
 
 /**
  * Created by plato on 2/23/2016.

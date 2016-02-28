@@ -1,4 +1,4 @@
-package ro.vplaton.artifacts;
+package ro.vplaton.models.artifacts;
 
 /**
  * Created by plato on 2/23/2016.

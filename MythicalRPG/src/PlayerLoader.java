@@ -1,6 +1,8 @@
-package ro.vplaton;
-
-import ro.vplaton.characters.*;
+import ro.vplaton.models.Player;
+import ro.vplaton.models.characters.Elf;
+import ro.vplaton.models.characters.Knight;
+import ro.vplaton.models.characters.Mage;
+import ro.vplaton.models.characters.Orc;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
