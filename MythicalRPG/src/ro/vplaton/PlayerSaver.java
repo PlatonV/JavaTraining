@@ -1,3 +1,5 @@
+package ro.vplaton;
+
 import ro.vplaton.models.Player;
 import ro.vplaton.models.characters.Hero;
 

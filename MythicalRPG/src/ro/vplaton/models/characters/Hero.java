@@ -56,18 +56,26 @@ public class Hero extends Character {
         }
     }
 
+    public void drinkPotion() {
+        health += 50;
+    }
+
     @Override
     public void getDamage(int damage) {
-        health -= damage - armor.getDefence();
+        if (armor != null) {
+            health -= damage - armor.getDefence();
+        } else {
+            health -= damage;
+        }
         super.getDamage(damage);
     }
 
     @Override
     public int computeDamage() {
         if (weapon != null) {
-            return weapon.getDamage() + (level / 2);
+            return 10 + weapon.getDamage() + (level / 2);
         } else {
-            return 0;
+            return 10;
         }
     }
 

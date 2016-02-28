@@ -1,23 +1,30 @@
 package ro.vplaton.models.characters;
 
+import java.util.Observable;
+
 /**
  * Created by plato on 2/23/2016.
  */
-public abstract class Character {
+public abstract class Character extends Observable {
     protected int health;
     protected int level;
     protected boolean isDead;
     protected final String name;
     private final int id;
-
     private static int idCounter = 0;
 
     public Character(String name, int level) {
+        super();
         this.level = level;
         this.name = name;
         this.isDead = false;
         this.id = idCounter;
         idCounter++;
+    }
+
+    private void stateChanged() {
+        this.setChanged();
+        this.notifyObservers(new Integer(4));
     }
 
     public int getId() {
@@ -40,6 +47,7 @@ public abstract class Character {
         if (health <= 0) {
             isDead = true;
         }
+        stateChanged();
     }
 
     public boolean isDead() {

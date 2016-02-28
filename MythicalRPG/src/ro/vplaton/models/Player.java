@@ -25,15 +25,6 @@ public class Player {
         return hero;
     }
 
-    public Hero getHero(String heroName) {
-        for (Hero h: heroes) {
-            if (h.getName() == heroName) {
-                return h;
-            }
-        }
-        return null;
-    }
-
     public ArrayList<Hero> getHeroes() {
         return heroes;
     }

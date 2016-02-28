@@ -1,3 +1,7 @@
+package ro.vplaton;
+
+import ro.vplaton.views.SelectCharacterView;
+
 /**
  * Created by plato on 2/28/2016.
  */
@@ -59,7 +63,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void playerNameOkActionPerformed(java.awt.event.ActionEvent evt) {
-        this.setContentPane(new SelectCharacter(playerNameText.getText()));
+        this.setContentPane(new SelectCharacterView(playerNameText.getText()));
         this.revalidate();
     }
 
