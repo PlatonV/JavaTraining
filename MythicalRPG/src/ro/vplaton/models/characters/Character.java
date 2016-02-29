@@ -13,7 +13,7 @@ public abstract class Character extends Observable {
     private final int id;
     private static int idCounter = 0;
 
-    public Character(String name, int level) {
+    protected Character(String name, int level) {
         super();
         this.level = level;
         this.name = name;
@@ -24,7 +24,7 @@ public abstract class Character extends Observable {
 
     private void stateChanged() {
         this.setChanged();
-        this.notifyObservers(new Integer(4));
+        this.notifyObservers();
     }
 
     public int getId() {

@@ -1,10 +1,7 @@
 package ro.vplaton;
 
 import ro.vplaton.models.Player;
-import ro.vplaton.models.characters.Elf;
-import ro.vplaton.models.characters.Knight;
-import ro.vplaton.models.characters.Mage;
-import ro.vplaton.models.characters.Orc;
+import ro.vplaton.models.characters.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,13 +18,13 @@ public class PlayerLoader {
         while ((s = reader.readLine()) != null) {
             String[] data = s.split(" ");
             if (data[2].equals("Elf")) {
-                player.addHero(new Elf(data[0], Integer.parseInt(data[1])));
+                player.addHero(HeroFactory.getInstance().createHero(HeroType.ELF, data[0], Integer.parseInt(data[1])));
             } else if (data[2].equals("Orc")) {
-                player.addHero(new Orc(data[0], Integer.parseInt(data[1])));
+                player.addHero(HeroFactory.getInstance().createHero(HeroType.ORC, data[0], Integer.parseInt(data[1])));
             } else if (data[2].equals("Mage")) {
-                player.addHero(new Mage(data[0], Integer.parseInt(data[1])));
+                player.addHero(HeroFactory.getInstance().createHero(HeroType.MAGE, data[0], Integer.parseInt(data[1])));
             } else if (data[2].equals("Knight")) {
-                player.addHero(new Knight(data[0], Integer.parseInt(data[1])));
+                player.addHero(HeroFactory.getInstance().createHero(HeroType.KNIGHT, data[0], Integer.parseInt(data[1])));
             }
         }
         return player;

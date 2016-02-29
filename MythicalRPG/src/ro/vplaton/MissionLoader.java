@@ -18,11 +18,11 @@ public class MissionLoader {
         while ((s = reader.readLine()) != null) {
             String[] data = s.split(" ");
             if (data[2].equals("Dark Mage")) {
-                mission.addVillain(new DarkMage(data[0], Integer.parseInt(data[1])));
+                mission.addVillain(VillainFactory.getInstance().createVillain(VillainType.DARK_MAGE, data[0], Integer.parseInt(data[1])));
             } else if (data[2].equals("Devil")) {
-                mission.addVillain(new Devil(data[0], Integer.parseInt(data[1])));
+                mission.addVillain(VillainFactory.getInstance().createVillain(VillainType.DEVIL, data[0], Integer.parseInt(data[1])));
             } else if (data[2].equals("Necromancer")) {
-                mission.addVillain(new Necromancer(data[0], Integer.parseInt(data[1])));
+                mission.addVillain(VillainFactory.getInstance().createVillain(VillainType.NECROMANCER, data[0], Integer.parseInt(data[1])));
             }
         }
         return mission;

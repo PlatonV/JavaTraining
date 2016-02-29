@@ -14,10 +14,15 @@ public class Hero extends Character {
     protected Weapon weapon;
     protected Armor armor;
     protected ArrayList<Artifact> inventory;
+    protected HeroType heroType;
     protected int experiece;
 
-    public Hero(String name, int level) {
+    protected Hero(String name, int level) {
         super(name, level);
+    }
+
+    public HeroType getHeroType() {
+        return heroType;
     }
 
     public void equipItem(Artifact artifact) {
